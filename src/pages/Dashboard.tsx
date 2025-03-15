@@ -5,7 +5,7 @@ const Dashboard = () => {
     const [permission, setPermission] = useState(Notification.permission);
     const [isSubscribed, setIsSubscribed] = useState(false);
     const [message, setMessage] = useState("太神啦");
-
+const url = "https://crm-pwa-server.onrender.com"
     useEffect(() => {
         setPermission(Notification.permission);
         navigator.serviceWorker.ready.then(reg => {
@@ -45,7 +45,7 @@ const Dashboard = () => {
             console.log("📩 訂閱成功:", subscription);
             setIsSubscribed(true);
 
-            await fetch("http://localhost:5000/api/subscribe", {
+            await fetch(`${url}/api/subscribe`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(subscription)
@@ -69,7 +69,7 @@ const Dashboard = () => {
                 return;
             }
     
-            await fetch("http://localhost:5000/api/unsubscribe", {
+            await fetch(`${url}/api/unsubscribe`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ endpoint: subscription.endpoint }) 
@@ -93,7 +93,7 @@ const Dashboard = () => {
     // 讓後端發送推播
     const sendNotification = async () => {
         try {
-            const response = await fetch("http://localhost:5000/api/send-notification", {
+            const response = await fetch(`${url}/api/send-notification`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
