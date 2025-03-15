@@ -9,6 +9,7 @@ import { DocumentTitleHandler, RefineRoutes, UnsavedChangesNotifier } from '@ref
 import { BrowserRouter, Route, Routes } from 'react-router'
 import { ColorModeContextProvider } from './contexts/color-mode'
 import RefineConfig from './RefineConfig'
+import { Navigate } from 'react-router'
 function App() {
   return (
     <BrowserRouter>
@@ -20,6 +21,7 @@ function App() {
             <DevtoolsProvider>
               <RefineConfig>
                 <Routes>
+                <Route path="/" element={<Navigate to="/dashboard" replace />} />
                   <Route path="/*" element={<RefineRoutes />} />
                 </Routes>
                 <RefineKbar />
