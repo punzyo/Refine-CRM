@@ -5,6 +5,10 @@ const Dashboard = () => {
     const [permission, setPermission] = useState(Notification.permission);
     const [isSubscribed, setIsSubscribed] = useState(false);
     const [message, setMessage] = useState("太神啦");
+    useEffect(() => {
+        console.log("🚀 Dashboard 加載");
+    }, []);
+    
 const url = "https://crm-pwa-server.onrender.com"
     useEffect(() => {
         setPermission(Notification.permission);
@@ -17,7 +21,7 @@ const url = "https://crm-pwa-server.onrender.com"
             });
         });
     }, []);
-    
+
     const urlBase64ToUint8Array = (base64String: string) => {
         const padding = "=".repeat((4 - (base64String.length % 4)) % 4);
         const base64 = (base64String + padding)
