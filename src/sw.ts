@@ -9,6 +9,20 @@ clientsClaim();
 
 cleanupOutdatedCaches();
 precacheAndRoute(self.__WB_MANIFEST);
+self.addEventListener("fetch", (event) => {
+  const url = new URL(event.request.url);
+
+  // 🚨 確保 HTML 頁面不被 Service Worker 攔截
+  if (event.request.mode === "navigate") {
+    return;
+  }
+
+  event.respondWith(
+    caches.match(event.request).then((response) => {
+      return response || fetch(event.request);
+    })
+  );
+});
 
 // 監聽推播通知
 self.addEventListener("push", (event) => {
