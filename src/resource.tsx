@@ -7,8 +7,8 @@ import Dashboard from "./pages/Dashboard";
 
 const resources = [
     {
-        name: "dashboard", // 設為首頁
-        list: Dashboard,  // 讓 Refine 在 `/` 顯示 Dashboard
+        name: "dashboard", 
+        list: Dashboard,  
         meta: { icon: <DashboardIcon />, label: "首頁" }
     },
     {
