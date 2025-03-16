@@ -10,6 +10,7 @@ import { BrowserRouter, Route, Routes } from 'react-router'
 import { ColorModeContextProvider } from './contexts/color-mode'
 import RefineConfig from './RefineConfig'
 import { Navigate } from 'react-router'
+import Dashboard from './pages/Dashboard'
 function App() {
   return (
     <BrowserRouter>
@@ -21,7 +22,7 @@ function App() {
             <DevtoolsProvider>
               <RefineConfig>
                 <Routes>
-                <Route path="/" element={<Navigate to="/dashboard" replace />} />
+                <Route path="/" element={<Dashboard/>} />
                   <Route path="/*" element={<RefineRoutes />} />
                 </Routes>
                 <RefineKbar />
