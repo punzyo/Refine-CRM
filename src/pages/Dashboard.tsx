@@ -17,7 +17,10 @@ const url = "https://crm-pwa-server.onrender.com"
             });
         });
     }, []);
-
+    useEffect(() => {
+        alert("📢 Dashboard 已載入");
+        console.log("📢 Dashboard 已載入");
+    }, []);
     const urlBase64ToUint8Array = (base64String: string) => {
         const padding = "=".repeat((4 - (base64String.length % 4)) % 4);
         const base64 = (base64String + padding)
