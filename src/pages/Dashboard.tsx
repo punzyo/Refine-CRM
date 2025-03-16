@@ -165,7 +165,6 @@ import { Button, Typography, Stack, TextField } from "@mui/material";
 //     );
 // };
 
-// export default Dashboard;
 const Dashboard = () => {
     return (
         <Stack spacing={2} sx={{ p: 3 }}>
@@ -174,3 +173,4 @@ const Dashboard = () => {
         </Stack>
     );
 };
+export default Dashboard;
