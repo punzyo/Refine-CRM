@@ -39,11 +39,18 @@ export const authProvider: AuthProvider = {
 
     if (res.ok) {
       return { authenticated: true }
-    } else {
-      return { authenticated: false, redirectTo: '/login' }
     }
-  },
+    const refresh = await fetch('http://localhost:3001/auth/refresh', {
+      method: 'POST',
+      credentials: 'include',
+    })
 
+    if (refresh.ok) {
+      return { authenticated: true }
+    }
+
+    return { authenticated: false, redirectTo: '/login' }
+  },
   getIdentity: async () => {
     const res = await fetch('http://localhost:3001/admin/me', {
       credentials: 'include',
