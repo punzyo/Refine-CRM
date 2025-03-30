@@ -58,7 +58,7 @@ export const authProvider: AuthProvider = {
     }
   },
 
-  onError: async () => {
-    return { error: { message: 'Auth error' } }
+  onError: async (error: any) => {
+    return { error: { name: 'AuthError', message: 'Auth error' } }
   },
 }
