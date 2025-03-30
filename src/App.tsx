@@ -1,16 +1,15 @@
-import { DevtoolsPanel, DevtoolsProvider } from '@refinedev/devtools'
-import { RefineKbar, RefineKbarProvider } from '@refinedev/kbar'
-import { Authenticated } from '@refinedev/core'
 import CssBaseline from '@mui/material/CssBaseline'
 import GlobalStyles from '@mui/material/GlobalStyles'
+import { Authenticated } from '@refinedev/core'
+import { DevtoolsPanel, DevtoolsProvider } from '@refinedev/devtools'
+import { RefineKbar, RefineKbarProvider } from '@refinedev/kbar'
 import { RefineSnackbarProvider } from '@refinedev/mui'
 import { DocumentTitleHandler, RefineRoutes, UnsavedChangesNotifier } from '@refinedev/react-router'
-import { BrowserRouter, Route, Routes } from 'react-router'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router'
+import Layout from './components/layout/Layout'
 import { ColorModeContextProvider } from './contexts/color-mode'
 import Login from './pages/login'
 import RefineConfig from './RefineConfig'
-import { Navigate } from 'react-router'
-import Layout from './components/layout/Layout'
 function App() {
   return (
     <BrowserRouter>
@@ -22,7 +21,18 @@ function App() {
             <DevtoolsProvider>
               <RefineConfig>
                 <Routes>
-                  <Route path="/login" element={<Login />} />
+                  <Route
+                    path="/login"
+                    element={
+                      <Authenticated
+                        key="login-check"
+                        v3LegacyAuthProviderCompatible
+                        fallback={<Login />}
+                      >
+                        <Navigate to="/" />
+                      </Authenticated>
+                    }
+                  />
                   <Route
                     path="/*"
                     element={
