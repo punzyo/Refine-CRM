@@ -66,7 +66,7 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
                     }}
                     variant="subtitle2"
                   >
-                    {user?.name}
+                    {user.name}
                   </Typography>
                 )}
                 <Avatar src={user?.avatar} alt={user?.name} />

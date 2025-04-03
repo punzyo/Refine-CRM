@@ -15,13 +15,13 @@ export const authProvider: AuthProvider = {
     if (res.ok) {
       const data = await res.json()
       console.log(data)
-      
+
       Cookies.set('permissions', JSON.stringify(data.permissions), {
         expires: 7,
         sameSite: 'Lax',
       })
 
-      Cookies.set('user', JSON.stringify({ id: data.userId, name: data.email }), {
+      Cookies.set('user', JSON.stringify({ id: data.userId, name: data.name, email: data.email }), {
         expires: 7,
         sameSite: 'Lax',
       })
@@ -74,7 +74,7 @@ export const authProvider: AuthProvider = {
   },
 
   getPermissions: async () => {
-    const raw = Cookies.get('permissions')    
+    const raw = Cookies.get('permissions')
     return raw ? JSON.parse(raw) : []
   },
 

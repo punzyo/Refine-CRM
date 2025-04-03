@@ -3,7 +3,7 @@ import { List } from '@refinedev/mui'
 import { Table, TableHead, TableRow, TableCell, TableBody } from '@mui/material'
 
 const AdminList = () => {
-  const { data, isLoading } = useList({ resource: 'admin' })
+  const { data, isLoading } = useList()
 
   if (isLoading) return <div>Loading...</div>
 
