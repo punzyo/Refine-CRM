@@ -6,9 +6,9 @@ import { RefineKbar, RefineKbarProvider } from '@refinedev/kbar'
 import { RefineSnackbarProvider } from '@refinedev/mui'
 import { DocumentTitleHandler, RefineRoutes, UnsavedChangesNotifier } from '@refinedev/react-router'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router'
+import { LoginRedirectIfAuthenticated } from './components/auth/LoginRedirectIfAuthenticated '
 import Layout from './components/layout/Layout'
 import { ColorModeContextProvider } from './contexts/color-mode'
-import Login from './pages/login'
 import RefineConfig from './RefineConfig'
 function App() {
   return (
@@ -21,18 +21,7 @@ function App() {
             <DevtoolsProvider>
               <RefineConfig>
                 <Routes>
-                  <Route
-                    path="/login"
-                    element={
-                      <Authenticated
-                        key="login-check"
-                        v3LegacyAuthProviderCompatible
-                        fallback={<Login />}
-                      >
-                        <Navigate to="/" />
-                      </Authenticated>
-                    }
-                  />
+                  <Route path="/login" element={<LoginRedirectIfAuthenticated />} />
                   <Route
                     path="/*"
                     element={
