@@ -11,9 +11,30 @@ axiosInstance.interceptors.request.use(
   (error) => Promise.reject(error)
 )
 
+
 axiosInstance.interceptors.response.use(
   (response) => response,
-  (error) => {
+  async (error) => {
+    const originalRequest = error.config
+
+    if (error.response?.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true
+
+      try {
+        const res = await axios.post(
+          'http://localhost:3001/auth/refresh',
+          {},
+          { withCredentials: true }
+        )
+
+        if (res.status === 200) {
+          return axiosInstance(originalRequest)
+        }
+      } catch (refreshError) {
+        window.location.href = '/login'
+      }
+    }
+
     return Promise.reject(error)
   }
 )
