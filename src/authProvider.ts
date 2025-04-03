@@ -1,4 +1,5 @@
 import { AuthProvider } from '@refinedev/core'
+let cachedUser: { id: string; name: string } | null = null
 
 export const authProvider: AuthProvider = {
   login: async ({ email, password }) => {
@@ -33,25 +34,31 @@ export const authProvider: AuthProvider = {
   },
 
   check: async () => {
+    if (cachedUser) return { authenticated: true }
+
     const res = await fetch('http://localhost:3001/admin/me', {
       credentials: 'include',
     })
 
     if (res.ok) {
+      const data = await res.json()
+      cachedUser = { id: data.userId, name: data.email }
       return { authenticated: true }
     }
+
     const refresh = await fetch('http://localhost:3001/auth/refresh', {
       method: 'POST',
       credentials: 'include',
     })
 
-    if (refresh.ok) {
-      return { authenticated: true }
-    }
+    if (refresh.ok) return { authenticated: true }
 
     return { authenticated: false, redirectTo: '/login' }
   },
+
   getIdentity: async () => {
+    if (cachedUser) return cachedUser
+
     const res = await fetch('http://localhost:3001/admin/me', {
       credentials: 'include',
     })
@@ -59,10 +66,8 @@ export const authProvider: AuthProvider = {
     if (!res.ok) return null
 
     const data = await res.json()
-    return {
-      id: data.userId,
-      name: data.email,
-    }
+    cachedUser = { id: data.userId, name: data.email }
+    return cachedUser
   },
 
   onError: async (error: any) => {
