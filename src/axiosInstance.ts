@@ -1,7 +1,7 @@
 import axios from 'axios'
-
+import { authProvider } from './authProvider'
 const axiosInstance = axios.create({
-  withCredentials: true, 
+  withCredentials: true,
 })
 
 axiosInstance.interceptors.request.use(
@@ -10,7 +10,6 @@ axiosInstance.interceptors.request.use(
   },
   (error) => Promise.reject(error)
 )
-
 
 axiosInstance.interceptors.response.use(
   (response) => response,
@@ -31,7 +30,8 @@ axiosInstance.interceptors.response.use(
           return axiosInstance(originalRequest)
         }
       } catch (refreshError) {
-        window.location.href = '/login'
+        authProvider.logout?.({})
+        return Promise.reject(refreshError)
       }
     }
 
