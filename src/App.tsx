@@ -23,7 +23,6 @@ function App() {
                 <Routes>
                   <Route path="/login" element={<LoginRedirectIfAuthenticated />} />
                   <Route
-                    path="/*"
                     element={
                       <Authenticated
                         key="auth"
@@ -31,10 +30,11 @@ function App() {
                         fallback={<Navigate to="/login" />}
                       >
                         <Layout />
-                        <RefineRoutes />
                       </Authenticated>
                     }
-                  />
+                  >
+                    <Route path="/*" element={<RefineRoutes />} />
+                  </Route>
                 </Routes>
                 <RefineKbar />
               </RefineConfig>

@@ -5,13 +5,14 @@ import dataProvider from '@refinedev/simple-rest'
 import { authProvider } from './authProvider'
 import resources from './resource'
 import axiosInstance from './axiosInstance'
+import { customDataProvider } from './customDataProvider'
 
 const RefineConfig: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const API_URL = 'http://localhost:3001'
 
   return (
     <Refine
-      dataProvider={dataProvider(API_URL,axiosInstance)}
+      dataProvider={customDataProvider}
       notificationProvider={useNotificationProvider}
       authProvider={authProvider}
       routerProvider={routerBindings}
