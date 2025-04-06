@@ -21,6 +21,18 @@ const RefineConfig: React.FC<{ children: React.ReactNode }> = ({ children }) => 
         syncWithLocation: true,
         warnWhenUnsavedChanges: true,
         useNewQueryKeys: true,
+        reactQuery: {
+          clientConfig: {
+            defaultOptions: {
+              queries: {
+                retry: false, 
+              },
+              mutations: {
+                retry: false,
+              },
+            },
+          },
+        },
       }}
     >
       {children}

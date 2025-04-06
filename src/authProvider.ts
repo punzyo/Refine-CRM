@@ -46,7 +46,7 @@ export const authProvider: AuthProvider = {
     Cookies.remove('permissions')
     Cookies.remove('user')
     cachedUser = null
-
+    window.location.href = '/login'
     return { success: true, redirectTo: '/login' }
   },
 

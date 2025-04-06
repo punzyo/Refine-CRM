@@ -1,7 +1,8 @@
-import { useTable } from '@refinedev/core'
+import { useTable, useTranslate } from '@refinedev/core'
 import { List } from '@refinedev/mui'
 import FilteredTable from '../../components/table/DataGridTable'
-
+import { generateColumns } from '../../utils/generateColumns'
+import RenderArrayWithMore from '../../components/table/RenderArrayWithMore'
 const AdminList = () => {
   const {
     tableQuery: { data, isLoading, isError },
@@ -16,24 +17,17 @@ const AdminList = () => {
     },
     syncWithLocation: false,
   })
-
-  const columns = [
-    {
-      field: 'email',
-      headerName: 'Email',
-      flex: 1,
+  const t = useTranslate()
+  const columns = generateColumns(data?.data || [], 'admins', t, {
+    customColumns: {
+      roles: {
+        headerName: t(`fields.admin.roles`, '角色'),
+        renderCell: (params: any) => <RenderArrayWithMore {...params} />,
+      },
     },
-    {
-      field: 'createdAt',
-      headerName: '建立時間',
-      flex: 1,
-    },
-    {
-      field: 'updatedAt',
-      headerName: '更新時間',
-      flex: 1,
-    },
-  ]
+    actions: true,
+    renderActions: (row) => <button>Show</button>,
+  })
 
   return (
     <List title="管理員列表">

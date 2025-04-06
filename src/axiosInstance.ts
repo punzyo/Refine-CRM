@@ -6,29 +6,37 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
   (config) => {
+    config.withCredentials = true
     return config
   },
   (error) => Promise.reject(error)
 )
+
 
 axiosInstance.interceptors.response.use(
   (response) => response,
   async (error) => {
     const originalRequest = error.config
 
-    if (error.response?.status === 401 && !originalRequest._retry) {
-      originalRequest._retry = true
+    if (originalRequest.headers?.['x-retry']) {
+      return Promise.reject(error)
+    }
+
+    if (error.response?.status === 401) {
+      originalRequest.headers['x-retry'] = 'true'
 
       try {
-        const res = await axios.post(
+        await axiosInstance.post(
           'http://localhost:3001/auth/refresh',
           {},
-          { withCredentials: true }
+          {
+            headers: {
+              'x-retry': 'true',
+            },
+          }
         )
 
-        if (res.status === 200) {
-          return axiosInstance(originalRequest)
-        }
+        return axiosInstance(originalRequest)
       } catch (refreshError) {
         authProvider.logout?.({})
         return Promise.reject(refreshError)
@@ -38,5 +46,4 @@ axiosInstance.interceptors.response.use(
     return Promise.reject(error)
   }
 )
-
 export default axiosInstance
