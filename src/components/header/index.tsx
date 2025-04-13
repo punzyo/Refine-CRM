@@ -26,44 +26,28 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
   const { data: user } = useGetIdentity<IUser>();
 
   return (
-    <AppBar position={sticky ? "sticky" : "relative"}>
+    <AppBar position={sticky ? 'sticky' : 'relative'}>
       <Toolbar>
-        <Stack
-          direction="row"
-          width="100%"
-          justifyContent="flex-end"
-          alignItems="center"
-        >
-          <LanguageSelector/>
+        <Stack direction="row" width="100%" justifyContent="flex-end" alignItems="center">
           <HamburgerMenu />
-          <Stack
-            direction="row"
-            width="100%"
-            justifyContent="flex-end"
-            alignItems="center"
-          >
+          <Stack direction="row" width="100%" justifyContent="flex-end" alignItems="center">
+            <LanguageSelector />
             <IconButton
               color="inherit"
               onClick={() => {
-                setMode();
+                setMode()
               }}
             >
-              {mode === "dark" ? <LightModeOutlined /> : <DarkModeOutlined />}
+              {mode === 'dark' ? <LightModeOutlined /> : <DarkModeOutlined />}
             </IconButton>
-
             {(user?.avatar || user?.name) && (
-              <Stack
-                direction="row"
-                gap="16px"
-                alignItems="center"
-                justifyContent="center"
-              >
+              <Stack direction="row" gap="16px" alignItems="center" justifyContent="center">
                 {user?.name && (
                   <Typography
                     sx={{
                       display: {
-                        xs: "none",
-                        sm: "inline-block",
+                        xs: 'none',
+                        sm: 'inline-block',
                       },
                     }}
                     variant="subtitle2"
@@ -78,5 +62,5 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
         </Stack>
       </Toolbar>
     </AppBar>
-  );
+  )
 };

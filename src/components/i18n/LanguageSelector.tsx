@@ -24,12 +24,12 @@ export const LanguageSelector = () => {
     <FormControl size="small" variant="outlined">
       <InputLabel sx={{ display: 'flex', alignItems: 'center' }}>
         <LanguageIcon sx={{ mr: 1 }} />
-        {t('Language')}
+        {t('common.Language')}
       </InputLabel>
       <Select
         value={selectedLocale}
         onChange={handleChange}
-        label={t('Language')}
+        label={t('common.Language')}
         sx={{ minWidth: 160 }}
       >
         <MenuItem value="en">English</MenuItem>
