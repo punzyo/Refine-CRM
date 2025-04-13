@@ -10,6 +10,7 @@ import { useGetIdentity } from "@refinedev/core";
 import { HamburgerMenu, RefineThemedLayoutV2HeaderProps } from "@refinedev/mui";
 import React, { useContext } from "react";
 import { ColorModeContext } from "../../contexts/color-mode";
+import { LanguageSelector } from "../i18n/LanguageSelector";
 
 type IUser = {
   id: number;
@@ -33,6 +34,7 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
           justifyContent="flex-end"
           alignItems="center"
         >
+          <LanguageSelector/>
           <HamburgerMenu />
           <Stack
             direction="row"
