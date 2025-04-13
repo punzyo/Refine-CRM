@@ -1,9 +1,11 @@
 import AdminList from "./pages/admin/AdminList";
 import AdminDetail from "./pages/admin/AdminDetail";
+import AdminCreate from "./pages/admin/AdminCreate";
 import MemberList from "./pages/member/MemberList";
 import MemberDetail from "./pages/member/MemberDetail";
 import { AdminPanelSettings, Person,  Dashboard as DashboardIcon  } from "@mui/icons-material";
 import Dashboard from "./pages/Dashboard";
+import { create } from "domain";
 
 const resources = [
     {
@@ -15,6 +17,7 @@ const resources = [
         name: "admin",
         list: AdminList,
         show: AdminDetail,
+        create: AdminCreate,
         meta: { icon: <AdminPanelSettings />, label: "管理員", canDelete: false }
     },
     {
