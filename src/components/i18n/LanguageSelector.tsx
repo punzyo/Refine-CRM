@@ -1,16 +1,23 @@
 import LanguageIcon from '@mui/icons-material/Language'
 import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material'
 import { useGetLocale, useSetLocale, useTranslate } from '@refinedev/core'
+import { useEffect, useState } from 'react'
 
 export const LanguageSelector = () => {
   const t = useTranslate()
   const setLocale = useSetLocale()
   const getLocale = useGetLocale()
 
-  const currentLocale = getLocale()
+  const [selectedLocale, setSelectedLocale] = useState(getLocale())
+
+  useEffect(() => {
+    setSelectedLocale(getLocale())
+  }, [getLocale])
 
   const handleChange = (event: SelectChangeEvent<string>) => {
-    setLocale(event.target.value as string)
+    const newLocale = event.target.value as string
+    setSelectedLocale(newLocale)
+    setLocale(newLocale)
   }
 
   return (
@@ -20,7 +27,7 @@ export const LanguageSelector = () => {
         {t('Language')}
       </InputLabel>
       <Select
-        value={currentLocale}
+        value={selectedLocale}
         onChange={handleChange}
         label={t('Language')}
         sx={{ minWidth: 160 }}

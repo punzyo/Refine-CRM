@@ -21,10 +21,12 @@
     "@refinedev/simple-rest": "^5.0.10",
     "axios": "^1.8.4",
     "dayjs": "^1.11.13",
+    "i18next": "^24.2.3",
     "js-cookie": "^3.0.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.54.2",
+    "react-i18next": "^15.4.1",
     "react-router": "^7.3.0"
   },
   "devDependencies": {

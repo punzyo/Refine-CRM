@@ -1,6 +1,6 @@
 import { Create } from '@refinedev/mui'
 import AdminForm from './AdminForm'
-import { useCustomCreate } from '../../utils/hooks/useCreateAdmin'
+import { useCustomCreate } from '../../utils/hooks/useCustomCreate'
 import { useForm } from '@refinedev/react-hook-form'
 import { useNavigate } from 'react-router'
 import { normalizeAdminFormPayload } from '../../utils/form/normalizeAdminFormPayload'
@@ -20,7 +20,7 @@ export default function AdminCreate() {
             const success = await handleCreate({
               resource: 'admin',
               values: normalizedPayload,
-              onSuccess: () => navigate('/members'),
+              onSuccess: () => navigate('/admin'),
             })
         }),
         disabled: isLoading,
