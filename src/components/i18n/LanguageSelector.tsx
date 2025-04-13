@@ -10,10 +10,6 @@ export const LanguageSelector = () => {
 
   const [selectedLocale, setSelectedLocale] = useState(getLocale())
 
-  useEffect(() => {
-    setSelectedLocale(getLocale())
-  }, [getLocale])
-
   const handleChange = (event: SelectChangeEvent<string>) => {
     const newLocale = event.target.value as string
     setSelectedLocale(newLocale)
