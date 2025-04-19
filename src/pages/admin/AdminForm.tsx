@@ -1,5 +1,6 @@
 import { Box, Stack } from '@mui/material'
 import InputField from '../../components/form/input/InputField'
+import RoleSelector from '../../components/form/select/RoleSelector';
 
 const AdminForm: React.FC<{ formMethods: any; isEdit: boolean }> = ({ formMethods, isEdit }) => {
   return (
@@ -63,6 +64,7 @@ const AdminForm: React.FC<{ formMethods: any; isEdit: boolean }> = ({ formMethod
               }}
               sx={{ flex: 1, minWidth: 180 }}
             />
+            <RoleSelector formMethods={formMethods}/>
           </Stack>
         )}
       </Stack>
