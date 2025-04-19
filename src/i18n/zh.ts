@@ -22,5 +22,15 @@ export const zh = {
       註冊成功: '註冊成功',
       'Email 已被註冊': 'Email 已被註冊',
     },
+    fields:{
+      admins:{
+        actions:"操作",
+        roles:"角色",
+        name:"姓名",
+        email:"E-mail",
+        createdAt:"建立時間",
+        updatedAt:"更新時間"
+      }
+    }
   },
 }

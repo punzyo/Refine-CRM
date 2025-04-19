@@ -22,5 +22,6 @@ export const en = {
       註冊成功: 'Registration successful',
       'Email 已被註冊': 'Email is already registered',
     },
+    
   },
 }

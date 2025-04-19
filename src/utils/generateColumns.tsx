@@ -40,7 +40,7 @@ export function generateColumns(
   if (options?.actions) {
     columns.push({
       field: 'actions',
-      headerName: t(`fields.${resource}.actions`, '操作'),
+      headerName: t(`fields.${resource}.actions`, 'actions'),
       width: 120,
       renderCell: (params) => {
         const row = params.row
