@@ -1,5 +1,6 @@
 import { useTable, useTranslate } from '@refinedev/core'
-import { List, ShowButton } from '@refinedev/mui'
+import { List } from '@refinedev/mui'
+import ActionCell from '../../components/table/ActionCell'
 import FilteredTable from '../../components/table/DataGridTable'
 import RenderArrayWithMore from '../../components/table/RenderArrayWithMore'
 import { generateColumns } from '../../utils/generateColumns'
@@ -27,7 +28,7 @@ const AdminList = () => {
       },
     },
     actions: true,
-    renderActions: (row) => <ShowButton />,
+    renderActions: (row) => <ActionCell row={row} resource="admin" />,
   })
 
   return (
