@@ -12,15 +12,14 @@ export const zh = {
       deleteFail: '刪除失敗',
     },
     errors: {
-      EMAIL_ALREADY_EXISTS: 'Email 已被註冊',
-      INVALID_CREDENTIALS: '無效的電子郵件或密碼',
-      UNAUTHORIZED: '未授權訪問',
-      FORBIDDEN: '禁止訪問',
-      NOT_FOUND: '資源不存在',
+      "EMAIL_ALREADY_EXISTS": "Email 已被註冊",
+      "INVALID_CREDENTIALS": "無效的電子郵件或密碼",
+      "UNAUTHORIZED": "未授權訪問",
+      "FORBIDDEN": "禁止訪問",
+      "NOT_FOUND": "資源不存在"
     },
-    server: {
-      註冊成功: '註冊成功',
-      'Email 已被註冊': 'Email 已被註冊',
+    success: {
+      "REGISTRATION_SUCCESS": "註冊成功"
     },
     fields:{
       admins:{

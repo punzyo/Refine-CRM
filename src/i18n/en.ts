@@ -18,9 +18,8 @@ export const en = {
       FORBIDDEN: 'Access forbidden',
       NOT_FOUND: 'Resource not found',
     },
-    server: {
-      註冊成功: 'Registration successful',
-      'Email 已被註冊': 'Email is already registered',
+    success: {
+      REGISTRATION_SUCCESS: 'Registration successful',
     },
     
   },
