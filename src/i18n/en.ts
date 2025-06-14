@@ -21,6 +21,8 @@ export const en = {
     success: {
       REGISTRATION_SUCCESS: 'Registration successful',
     },
-    
+    notifications: {
+      deleteSuccess: 'Deleted successfully',
+    },
   },
 }
